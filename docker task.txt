@@ -1,0 +1,170 @@
+1
+hajar@hajar:~$ ls
+app.jar  apps  hello-docker
+hajar@hajar:~$ mv ~/app.jar ~/hello-docker/
+hajar@hajar:~$ cd hello-docker
+hajar@hajar:~/hello-docker$ ls
+app.jar
+hajar@hajar:~/hello-docker$ java -jar app.jar
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-07-14T10:09:36.071Z  INFO 2091 --- [hello] [           main] com.example.hello.HelloApplication       : Starting HelloApplication v0.0.1-SNAPSHOT using Java 17.0.19 with PID 2091 (/home/hajar/hello-docker/app.jar started by hajar in /home/hajar/hello-docker)
+2026-07-14T10:09:36.184Z  INFO 2091 --- [hello] [           main] com.example.hello.HelloApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-07-14T10:09:41.283Z  INFO 2091 --- [hello] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-07-14T10:09:41.329Z  INFO 2091 --- [hello] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-14T10:09:41.330Z  INFO 2091 --- [hello] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-07-14T10:09:41.457Z  INFO 2091 --- [hello] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 4957 ms
+2026-07-14T10:09:44.033Z  INFO 2091 --- [hello] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-07-14T10:09:44.223Z  INFO 2091 --- [hello] [           main] com.example.hello.HelloApplication       : Started HelloApplication in 10.615 seconds (process running for 14.017)
+^C2026-07-14T10:12:38.114Z  INFO 2091 --- [hello] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-14T10:12:38.237Z  INFO 2091 --- [hello] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+hajar@hajar:~/hello-docker$
+
+2- docker file created
+
+
+3- 
+PS C:\Users\hajar\Downloads\hello\hello> docker build -t hello-server:1.0 .
+[+] Building 12.4s (8/8) FINISHED                                                                                                             docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                          0.1s
+ => => transferring dockerfile: 161B                                                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/eclipse-temurin:17-jre                                                                                     2.9s 
+ => [internal] load .dockerignore                                                                                                                             0.0s
+ => => transferring context: 2B                                                                                                                               0.0s 
+ => [1/3] FROM docker.io/library/eclipse-temurin:17-jre@sha256:1824944ef1bd572d1ff0952afeb2fec7931d77c972c4fbc4dfcdf89f758fb490                               7.2s 
+ => => resolve docker.io/library/eclipse-temurin:17-jre@sha256:1824944ef1bd572d1ff0952afeb2fec7931d77c972c4fbc4dfcdf89f758fb490                               0.1s
+ => => sha256:574a6ffeb08ee9d4f77f1b9b7393f6d0c15f14708e3657595b1188a3faf1f16a 158B / 158B                                                                    0.9s 
+ => => sha256:d73d92311bea3f00286afac21334241823620c711a13784434dfed3aa0c25967 20.12MB / 20.12MB                                                              3.8s
+ => => sha256:e640fc6efa14572a4927ea18b99beb6aa60a045aec2c5f1f3305304bd19e6633 2.28kB / 2.28kB                                                                1.0s
+ => => sha256:b327eaca63b3e5f55ba0906deb1896c9f41ed93805424310d45c3073cbe49b50 47.57MB / 47.57MB                                                              5.6s 
+ => => extracting sha256:d73d92311bea3f00286afac21334241823620c711a13784434dfed3aa0c25967                                                                     2.0s 
+ => => extracting sha256:b327eaca63b3e5f55ba0906deb1896c9f41ed93805424310d45c3073cbe49b50                                                                     1.0s 
+ => => extracting sha256:574a6ffeb08ee9d4f77f1b9b7393f6d0c15f14708e3657595b1188a3faf1f16a                                                                     0.0s 
+ => => extracting sha256:e640fc6efa14572a4927ea18b99beb6aa60a045aec2c5f1f3305304bd19e6633                                                                     0.0s 
+ => [internal] load build context                                                                                                                             3.8s 
+ => => transferring context: 19.87MB                                                                                                                          3.7s 
+ => [2/3] WORKDIR /app                                                                                                                                        0.3s 
+ => [3/3] COPY app.jar app.jar                                                                                                                                0.1s 
+ => exporting to image                                                                                                                                        1.4s 
+ => => exporting layers                                                                                                                                       0.9s 
+ => => exporting manifest sha256:f7bc9ed552740913953d93556e1d356e2b39093703b208b187e3f62043ab6c63                                                             0.0s 
+ => => exporting config sha256:d56bc24984ee8246b791c58a3173237ff4cfbc67597e7b655dde0ac696a463cb                                                               0.0s 
+ => => exporting attestation manifest sha256:26add7cadd0deaf981ac39be238c93ac16e1f0956bd170539d665884684b0716                                                 0.0s 
+ => => exporting manifest list sha256:4a1069633b21fa4185824108ec303e90025a40e90ba778dcac6063b044399219                                                        0.0s 
+ => => naming to docker.io/library/hello-server:1.0                                                                                                           0.0s 
+ => => unpacking to docker.io/library/hello-server:1.0                                                                                                        0.2s 
+PS C:\Users\hajar\Downloads\hello\hello> docker run -d -p 8080:8080 --name hello hello-server:1.0                                                                  
+07b3fe3cbcee73bf0f2e3a00ddfd4235732a26091063de5f23188aeb7440318a
+PS C:\Users\hajar\Downloads\hello\hello> docker logs hello
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-07-14T10:24:40.678Z  INFO 1 --- [hello] [           main] com.example.hello.HelloApplication       : Starting HelloApplication v0.0.1-SNAPSHOT using Java 17.0.19 with PID 1 (/app/app.jar started by root in /app)
+2026-07-14T10:24:40.683Z  INFO 1 --- [hello] [           main] com.example.hello.HelloApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-07-14T10:24:41.989Z  INFO 1 --- [hello] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-07-14T10:24:42.011Z  INFO 1 --- [hello] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-14T10:24:42.012Z  INFO 1 --- [hello] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-07-14T10:24:42.056Z  INFO 1 --- [hello] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1269 ms
+2026-07-14T10:24:42.594Z  INFO 1 --- [hello] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-07-14T10:24:42.608Z  INFO 1 --- [hello] [           main] com.example.hello.HelloApplication       : Started HelloApplication in 2.813 seconds (process running for 3.702)
+PS C:\Users\hajar\Downloads\hello\hello> docker rm -f hello
+hello
+
+
+4-
+PS C:\Users\hajar\Downloads\hello\hello> docker compose up -d
+#1 [internal] load local bake definitions
+#1 reading from stdin 527B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 161B 0.0s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:17-jre
+#3 DONE 2.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 31B done
+#5 DONE 0.0s
+
+#6 [1/3] FROM docker.io/library/eclipse-temurin:17-jre@sha256:1824944ef1bd572d1ff0952afeb2fec7931d77c972c4fbc4dfcdf89f758fb490
+#6 resolve docker.io/library/eclipse-temurin:17-jre@sha256:1824944ef1bd572d1ff0952afeb2fec7931d77c972c4fbc4dfcdf89f758fb490 0.0s done
+#6 DONE 0.1s
+
+#7 [2/3] WORKDIR /app
+#7 CACHED
+
+#8 [3/3] COPY app.jar app.jar
+#8 CACHED
+
+#9 exporting to image
+#9 exporting layers 0.0s done
+#9 exporting manifest sha256:ef912e6a808cf35ffcbf6823ff8f8f3b1954f9402f5da8e41b3014677507e315 0.0s done
+#9 exporting config sha256:653c3866bcd5d1e6e820679a47773f2d5511bf03a5426e129d54f5200a7fd75b 0.0s done
+#9 exporting attestation manifest sha256:f842398eaa21acadc35d0d27b0d3b93334310eab0ea3dfac3496ec3d6dda44ff 0.0s done
+#9 exporting manifest list sha256:ab73312f0757e284b8d2223278a9653bcac87e309931b2bebfec3bdf4d3536d3 0.0s done
+#9 naming to docker.io/library/hello-hello:latest done
+#9 unpacking to docker.io/library/hello-hello:latest 0.0s done
+#9 DONE 0.2s
+
+#10 resolving provenance for metadata file
+#10 DONE 0.0s
+[+] up 3/3
+ ✔ Image hello-hello       Built                                                                                                                               4.2s
+ ✔ Network hello_default   Created                                                                                                                             0.2s
+ ✔ Container hello-hello-1 Started                                                                                                                             1.0s
+PS C:\Users\hajar\Downloads\hello\hello> docker compose ps
+NAME            IMAGE         COMMAND               SERVICE   CREATED          STATUS          PORTS
+hello-hello-1   hello-hello   "java -jar app.jar"   hello     10 seconds ago   Up 10 seconds   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+PS C:\Users\hajar\Downloads\hello\hello> docker compose logs -f
+hello-1  | 
+hello-1  |   .   ____          _            __ _ _
+hello-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+hello-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+hello-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+hello-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+hello-1  |  =========|_|==============|___/=/_/_/_/
+hello-1  | 
+hello-1  |  :: Spring Boot ::                (v4.1.0)
+hello-1  | 
+hello-1  | 2026-07-14T10:48:39.816Z  INFO 1 --- [hello] [           main] com.example.hello.HelloApplication       : Starting HelloApplication v0.0.1-SNAPSHOT using Java 17.0.19 with PID 1 (/app/app.jar started by root in /app)
+hello-1  | 2026-07-14T10:48:39.824Z  INFO 1 --- [hello] [           main] com.example.hello.HelloApplication       : No active profile set, falling back to 1 default profile: "default"
+hello-1  | 2026-07-14T10:48:41.234Z  INFO 1 --- [hello] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+hello-1  | 2026-07-14T10:48:41.259Z  INFO 1 --- [hello] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+hello-1  | 2026-07-14T10:48:41.260Z  INFO 1 --- [hello] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+hello-1  | 2026-07-14T10:48:41.312Z  INFO 1 --- [hello] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1376 ms
+hello-1  | 2026-07-14T10:48:41.897Z  INFO 1 --- [hello] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+hello-1  | 2026-07-14T10:48:41.917Z  INFO 1 --- [hello] [           main] com.example.hello.HelloApplication       : Started HelloApplication in 2.916 seconds (process running for 3.756)
+hello-1  | 2026-07-14T10:49:20.134Z  INFO 1 --- [hello] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+hello-1  | 2026-07-14T10:49:20.135Z  INFO 1 --- [hello] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+hello-1  | 2026-07-14T10:49:20.138Z  INFO 1 --- [hello] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+
+PS C:\Users\hajar\Downloads\hello\hello> docker compose down
+[+] down 2/2
+ ✔ Container hello-hello-1 Removed                                                                                                                             0.9s
+ ✔ Network hello_default   Removed                                                                                                                             0.3s
+PS C:\Users\hajar\Downloads\hello\hello> docker compose up -d
+[+] up 2/2
+ ✔ Network hello_default   Created                                                                                                                             0.1s
+ ✔ Container hello-hello-1 Started                                                                                                                             0.6s
+PS C:\Users\hajar\Downloads\hello\hello> 
